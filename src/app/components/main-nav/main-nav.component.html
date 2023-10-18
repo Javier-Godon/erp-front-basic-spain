@@ -1,0 +1,111 @@
+<mat-toolbar color="primary" class="mat-elevation-z6 fixed-top">
+  <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
+    *ngIf="isHandset$ | async">
+    <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+  </button>
+  <span>
+    <mat-icon>
+      eco
+    </mat-icon>
+    Bluesolution
+  </span>
+  <div class="spacer"></div>
+  <a mat-raised-button color="primary">cerrar sesión</a>
+</mat-toolbar>
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport="true"
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false">
+    <mat-nav-list>
+      <div class="input-group">
+        <input class="form-control mr-sm-2 mr-1" type="search" placeholder="Buscar..." aria-label="Search">
+      </div>
+      <mat-accordion>
+        <mat-expansion-panel hideToggle class="whiteFont">
+          <mat-expansion-panel-header class="whiteFont">
+            personas
+          </mat-expansion-panel-header>
+          <a mat-list-item routerLink="person" class="whiteFontSubLevel">personas</a>
+        </mat-expansion-panel>
+        <mat-expansion-panel hideToggle class="whiteFont">
+          <mat-expansion-panel-header class="whiteFont">
+            facturación
+          </mat-expansion-panel-header>
+          <a mat-list-item href="#" class="whiteFontSubLevel">facturación</a>
+        </mat-expansion-panel>
+        <mat-expansion-panel hideToggle class="whiteFont">
+          <mat-expansion-panel-header class="whiteFont">
+            catálogo
+          </mat-expansion-panel-header>
+          <a mat-list-item routerLink="basic-catalog" class="whiteFontSubLevel">catálogo</a>
+        </mat-expansion-panel>
+        <mat-expansion-panel hideToggle class="whiteFont">
+          <mat-expansion-panel-header class="whiteFont">
+            almacén
+          </mat-expansion-panel-header>
+          <a mat-list-item routerLink="address" class="whiteFontSubLevel">almacén</a>
+          <a mat-list-item href="#" routerLink="shipment-order-list" class="whiteFontSubLevel">salidas de almacén</a>          
+        </mat-expansion-panel>
+        <mat-expansion-panel hideToggle class="whiteFont">
+          <mat-expansion-panel-header class="whiteFont">
+            cobros y pagos
+          </mat-expansion-panel-header>
+          <a mat-list-item href="#" class="whiteFontSubLevel">cobros</a>
+          <a mat-list-item href="#" class="whiteFontSubLevel">pagos</a>
+        </mat-expansion-panel>
+        <mat-expansion-panel hideToggle class="whiteFont">
+          <mat-expansion-panel-header class="whiteFont">
+            reparto
+          </mat-expansion-panel-header>
+          <a mat-list-item href="#" routerLink="delivery-list" class="whiteFontSubLevel">entregas</a>
+        </mat-expansion-panel>
+        <mat-expansion-panel hideToggle class="whiteFont">
+          <mat-expansion-panel-header class="whiteFont">
+            inventario
+          </mat-expansion-panel-header>
+          <a mat-list-item href="#" class="whiteFontSubLevel">inventario</a>
+        </mat-expansion-panel>
+        <mat-expansion-panel hideToggle class="whiteFont">
+          <mat-expansion-panel-header class="whiteFont">
+            ventas
+          </mat-expansion-panel-header>
+          <a mat-list-item href="#" routerLink="order-list" class="whiteFontSubLevel">pedidos</a> 
+        </mat-expansion-panel>
+        <mat-expansion-panel hideToggle class="whiteFont">
+          <mat-expansion-panel-header class="whiteFont">
+            devoluciones de ventas
+          </mat-expansion-panel-header>
+          <a mat-list-item href="#" class="whiteFontSubLevel">devoluciones de ventas</a>
+        </mat-expansion-panel>
+        <mat-expansion-panel hideToggle class="whiteFont">
+          <mat-expansion-panel-header class="whiteFont">
+            marketing
+          </mat-expansion-panel-header>
+          <a mat-list-item href="#" class="whiteFontSubLevel">marketing</a>
+        </mat-expansion-panel>
+        <mat-expansion-panel hideToggle class="whiteFont">
+          <mat-expansion-panel-header class="whiteFont">
+            garantías
+          </mat-expansion-panel-header>
+          <a mat-list-item href="#" class="whiteFontSubLevel">garantías</a>
+        </mat-expansion-panel>
+        <mat-expansion-panel hideToggle class="whiteFont">
+          <mat-expansion-panel-header class="whiteFont">
+            logística
+          </mat-expansion-panel-header>
+          <a mat-list-item href="#" class="whiteFontSubLevel">logística</a>
+        </mat-expansion-panel>
+        <mat-expansion-panel hideToggle class="whiteFont">
+          <mat-expansion-panel-header class="whiteFont">
+            contabilidad
+          </mat-expansion-panel-header>
+          <a mat-list-item href="#" class="whiteFontSubLevel">contabilidad</a>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content class="main-content">
+    <ng-content></ng-content>
+    <!-- Add Content Here -->
+  </mat-sidenav-content>
+</mat-sidenav-container>

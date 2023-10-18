@@ -1,0 +1,83 @@
+
+.shipping-card {
+  min-width: 120px;
+  margin: 0px auto;
+}
+
+.mat-radio-button {
+  display: block;
+  margin: 5px 0;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.col {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.col:last-child {
+  margin-right: 0;
+}
+
+.no-padding {
+  padding: 0px;
+}
+
+.card-padding {
+  padding-top: 40px;
+}
+
+.thin-bar {
+ // background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');  
+  background-size: cover;
+}
+.spacer{
+  flex: 1 1 auto;
+}
+
+.small-label {
+  color: blue;
+  font-size: x-small;
+}
+
+.little-table{
+  height: 100px;
+  overflow-y:scroll;
+  overflow-x:hidden;
+}
+
+.header-align-right{
+  display: flex;
+  padding: 21px 0;
+  justify-content: flex-end;
+}
+
+.table-row {
+  height: 20px !important;  
+}
+
+.mat-cell{
+  font-weight: lighter;
+}
+
+table {
+  width: 100%;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.spacer{
+  flex: 1 1 auto;
+}
+
+.soft-card-title {
+  font-size: 15px;
+  color: rgb(8, 8, 34) !important;
+  text-align: left !important;
+}

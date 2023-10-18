@@ -1,0 +1,8 @@
+<mat-form-field floatLabel="always" class="input-price-form-field" appearance="outline">
+    <mat-label>Precio</mat-label>
+    <!-- <mat-icon matPrefix>money</mat-icon> -->
+    <!-- <input matInput placeholder="precio" name="input-price"/> -->
+    <app-input-price [formControl]="formControl" [required]="false" [currencies]="currencies"
+        [price]="price" placeholderWhole="0.000" placeholderDecimal="00" placeholderCurrency="EUR">
+    </app-input-price>
+</mat-form-field>

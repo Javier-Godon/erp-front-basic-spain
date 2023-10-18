@@ -1,0 +1,55 @@
+.marginLeft {
+    margin-left: 30px;
+}
+
+.full-width {
+    width: 100%;
+  }
+  
+  .searcher {
+    margin-top: 10px;
+  }
+  
+  .icon {
+    margin-top: 5px;
+    margin-left: 10px;
+  }
+  
+  .item-progress-bar {
+    margin-left: 30px;
+  }
+  
+  .spacer {
+    flex: 1 1 auto;
+  }
+  
+  table {
+    width: 100%;
+  }
+  
+  .small-label {
+    color: blue;
+    font-size: x-small;
+  }
+
+  .spacer{
+    flex: 1 1 auto;
+  }
+  
+  .fixed-top {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+  }
+
+  .three-characters{
+    width: fit-content;
+  }
+
+  .spacer{
+    flex: 1 1 auto;
+  }
+
+

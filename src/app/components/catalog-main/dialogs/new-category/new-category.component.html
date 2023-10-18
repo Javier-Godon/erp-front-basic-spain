@@ -1,0 +1,52 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="with = device-with, initial-scale=1">
+</head>
+<header>
+
+</header>
+<form #categoryProductForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
+    <mat-card class="shipping-card">
+        <mat-card-header>
+            <div mat-card-avatar>
+                <mat-icon>
+                    topic
+                </mat-icon>
+            </div>
+            <mat-card-title>Categoría</mat-card-title>
+            <mat-card-subtitle>Detalle de la categoría</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Nombre" name="categoryName"
+                            [(ngModel)]="catalogCategory.categoryName">
+                        <!-- <mat-error *ngIf="newProductForm.controls['manufacturer_original_id'].hasError('required')">
+              Referencia is <strong>required</strong>
+            </mat-error> -->
+                        <!-- <mat-error *ngIf="addressForm.controls['country'].hasError('required')">
+                            Country is <strong>required</strong>
+                        </mat-error> -->
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <mat-form-field class="full-width">
+                        <textarea matInput placeholder="Descripción" name="categoryDescription"
+                            cdkTextareaAutosize="true" cdkAutosizeMaxRows="6" cdkAutosizeMinRows="4"
+                            [(ngModel)]="catalogCategory.categoryDescription">
+                            </textarea>
+                    </mat-form-field>
+                    <!-- <mat-error *ngIf="addressForm.controls['administrative_area'].hasError('required')">
+                            City is <strong>required</strong>
+                        </mat-error> -->
+                </div>
+            </div>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button mat-dialog-close color="basic" type="submit">Guardar</button>
+        </mat-card-actions>
+    </mat-card>
+</form>

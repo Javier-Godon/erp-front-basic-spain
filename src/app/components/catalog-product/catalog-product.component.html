@@ -1,0 +1,140 @@
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="with = device-with, initial-scale=1">
+</head>
+<header>
+  <mat-toolbar color="primary">
+    <div mat-card-avatar>
+      <mat-icon>
+        description
+      </mat-icon>
+    </div>
+    Ficha de producto
+  </mat-toolbar>
+</header>
+
+<div class="form-row">
+  <div class="form-group col-md-12">
+    <form #catalogProductForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
+      <hr />
+      {{ catalogItem | json}}
+      <hr />
+      <mat-card class="shipping-card">
+        <mat-card-content>
+
+          <!-- <div class="form-row">
+            <div class="form-group col-md-12 marginLeft">
+              <mat-form-field>
+                <mat-select placeholder="id de fabricante" name="manufacturer_id"
+                  [(ngModel)]="catalogItem.manufacturerId" >
+                  <mat-option *ngFor="let manufacturer_id of manufacturerIds" [value]="catalogItem.manufacturerId">
+                    {{ catalogItem.manufacturerId }}
+                  </mat-option>
+                </mat-select>                
+              </mat-form-field>
+            </div>
+          </div> -->
+          <div class="form-row">
+            <div class="form-group  col-md-12 marginLeft">
+              <mat-form-field>
+                <mat-select placeholder="Fabricante" name="name_line">
+                  <mat-option *ngFor="let name_line of nameLines" [value]="name_line.name">
+                    {{ name_line.name }}
+                  </mat-option>
+                </mat-select>
+                <!-- <mat-error *ngIf="catalogProductForm.controls['name_line'].hasError('required')">
+                  manufacturer is <strong>required</strong>
+                </mat-error> -->
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-12 marginLeft">
+              <mat-form-field>
+                <input matInput placeholder="Referencia original" name="manufacturer_original_id"
+                  [(ngModel)]="catalogItem.manufacturerOriginalId" >
+                <!-- <mat-error *ngIf="catalogProductForm.controls['manufacturer_original_id'].hasError('required')">
+                  Referencia is <strong>required</strong>
+                </mat-error> -->
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-12 marginLeft">
+              <mat-form-field>
+                <input matInput placeholder="Título del producto" name="item_title" [(ngModel)]="catalogItem.itemTitle">
+                <!-- <mat-error *ngIf="catalogProductForm.controls['item_title'].hasError('required')">
+                  Título del producto is <strong>required</strong>
+                </mat-error> -->
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-12 marginLeft">
+              <mat-form-field>
+                <input matInput placeholder="Precio (P.V.P)" name="retail_price" [(ngModel)]="catalogItemPrice.retailPrice">
+                <!-- <mat-error *ngIf="catalogProductForm.controls['retail_price'].hasError('required')">
+                  Street type is <strong>required</strong>
+                </mat-error> -->
+              </mat-form-field>
+            </div>
+          </div>
+
+
+
+        </mat-card-content>
+        <mat-card-actions class="marginLeft">
+          <button mat-raised-button color="basic" type="submit">Actualizar</button>
+        </mat-card-actions>
+      </mat-card>
+    </form>
+  </div>
+</div>
+
+<div class="form-row">
+  <div class="form-group col-md-12">
+    <mat-card class="shipping-card">
+      <mat-card-content>
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Descripción
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="form-group col-md-12 col-lg-12">
+            <mat-form-field class="full-width">
+              <textarea matInput name="description" cdkTextareaAutosize="true" cdkAutosizeMaxRows="6" [(ngModel)]="catalogItemDescription.description">
+              </textarea>
+            </mat-form-field>
+          </div>
+        </mat-expansion-panel>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+
+<div class="form-row">
+  <div class="form-group col-md-12">
+    <form [formGroup]="imageForm" novalidate>
+      <mat-card class="shipping-card">
+        <mat-card-content>
+          <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Imágenes
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="form-row">
+              <div class="form-group col-md-8 col-lg-8">
+                <input type="file" name="image" (change)="onFileSelected($event)">
+              </div>
+              <div class="form-group col-md-4 col-lg-4">
+                <button mat-raised-button color="basic" type="submit" (click)="onUploadFile()">Guardar</button>
+              </div>
+            </div>
+          </mat-expansion-panel>
+        </mat-card-content>
+      </mat-card>
+    </form>
+  </div>
+</div>

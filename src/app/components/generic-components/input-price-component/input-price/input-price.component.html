@@ -1,0 +1,23 @@
+<ng-container [formGroup]="priceForm">       
+    <input matInput #mainPriceInput [placeholder]="placeholderWhole" type="text" name="input-main-price" class="main-input" formControlName="wholePrice"
+    (keyup)="onMainPriceChange($event)" [value]="value.wholePrice"/>
+    <!-- <mat-divider [vertical]="true" class="divider"></mat-divider>
+    <mat-label>,</mat-label> -->
+    <mat-divider [vertical]="true" class="divider"></mat-divider>
+    <input matInput #decimalPriceInput [placeholder]="placeholderDecimal" type="text" pattern=”[0–9]*” name="input-decimal-price" class="decimal-input" maxlength="2" size="2" formControlName="decimalPrice"
+    (keyup)="onDecimalPriceChange($event)" [value]="value.decimalPrice"/>
+    <mat-divider [vertical]="true" class="divider"></mat-divider>
+    <mat-select #currencySelect class="select" [(value)]="price.currencyIso3" formControlName="currency" [placeholder]="placeholderCurrency" (selectionChange)="onCurrencyChange($event)">
+        <!-- <mat-option value="eur">EUR</mat-option>
+        <mat-option value="usd">USD</mat-option> -->
+        <mat-option *ngFor="let currency of currencies" name="currency" [value]="currency">
+            {{ currency }}
+        </mat-option>
+    </mat-select>
+
+    <!-- <mat-selection-list dense [multiple]="false" >
+        <mat-list-option [mat-dialog-close]="currency" *ngFor="let currency of currencies" name="currency" [(value)]="currency">
+            {{ currency }}
+        </mat-list-option>
+    </mat-selection-list> -->
+</ng-container>

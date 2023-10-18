@@ -1,0 +1,141 @@
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="with = device-with, initial-scale=1">
+</head>
+<header>
+
+</header>
+<form [formGroup]="addressForm" novalidate (ngSubmit)="onSubmit()">
+  <mat-card class="shipping-card">
+    <mat-card-header>
+      <div mat-card-avatar>
+        <mat-icon>
+          directions
+        </mat-icon>
+      </div>
+      <mat-card-title>Dirección</mat-card-title>
+      <mat-card-subtitle>Dirección detallada</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <mat-form-field class="full-width">
+            <mat-select placeholder="País" formControlName="country">
+              <mat-option *ngFor="let country of countries" [value]="country.name">
+                {{ country.name }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="addressForm.controls['country'].hasError('required')">
+              Country is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>      
+      <div class="form-group col-md-4">
+          <mat-form-field class="full-width">
+            <mat-select placeholder="Comunidad autónoma" formControlName="state">
+              <mat-option *ngFor="let state of states" [value]="state.name">
+                {{ state.name }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="addressForm.controls['state'].hasError('required')">
+              State is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <mat-form-field class="full-width">
+            <mat-select placeholder="Provincia" formControlName="administrative_area">
+              <mat-option *ngFor="let administrative_area of administrative_areas" [value]="administrative_area.name">
+                {{ administrative_area.name }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="addressForm.controls['administrative_area'].hasError('required')">
+              City is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form-group col-md-4">
+          <mat-form-field class="full-width">
+            <mat-select placeholder="Ciudad" formControlName="city">
+              <mat-option *ngFor="let city of cities" [value]="city.name">
+                {{ city.name }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="addressForm.controls['city'].hasError('required')">
+              City is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="form-row">               
+        <div class="form-group col-md-2 col-lg-2">
+          <mat-form-field class="full-width">
+            <mat-select placeholder="Tipo de vía" formControlName="street_type">
+              <mat-option *ngFor="let street_type of street_types" [value]="street_type.name">
+                {{ street_type.name }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="addressForm.controls['street_type'].hasError('required')">
+              Street type is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form-group col-md-8 col-lg-8">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Vía" formControlName="street">
+            <mat-error *ngIf="addressForm.controls['street'].hasError('required')">
+              Street is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div> 
+        <div class="form-group col-md-2 col-lg-2">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Código postal" formControlName="postalCode">
+            <mat-error *ngIf="addressForm.controls['postalCode'].hasError('required')">
+              Postal code is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>       
+      </div>
+      <div class="form-row">
+      <div class="form-group col-6 col-sm-6 col-md-3">
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Número" formControlName="street_number">
+          <mat-error *ngIf="addressForm.controls['street_number'].hasError('required')">
+            Street number is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="form-group col-6  col-sm-6 col-md-3">
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Piso" formControlName="floor">
+          <mat-error *ngIf="addressForm.controls['floor'].hasError('required')">
+            Street number is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="form-group col-6  col-sm-6 col-md-3">
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Escalera" formControlName="stairs">
+          <mat-error *ngIf="addressForm.controls['stairs'].hasError('required')">
+            Street number is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="form-group col-6  col-sm-6 col-md-3">
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Puerta" formControlName="letter">
+          <mat-error *ngIf="addressForm.controls['letter'].hasError('required')">
+            Street number is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="basic" type="submit">Guardar</button>
+    </mat-card-actions>
+  </mat-card>
+</form>

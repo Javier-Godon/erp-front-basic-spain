@@ -1,0 +1,83 @@
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width = device-width, initial-scale=1">
+</head>
+<header>
+
+</header>
+<form #newProductForm="ngForm" novalidate>
+  <form #personForm="ngForm" novalidate>
+    <mat-card class="shipping-card">
+      <mat-card-header>
+        <div mat-card-avatar>
+          <mat-icon>
+            directions
+          </mat-icon>
+        </div>
+        <mat-card-title>Producto</mat-card-title>
+        <mat-card-subtitle>Detalle del producto</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="form-row">
+          <div class="form-group col-sm-6 col-md-6 col-lg-6">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Título del producto" name="itemTitle" [(ngModel)]="catalogItem.itemTitle">
+              <!-- <mat-error *ngIf="newProductForm.controls['item_title'].hasError('required')">
+              Título del producto is <strong>required</strong>
+            </mat-error> -->
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-sm-6 col-md-6 col-lg-6">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Referencia original" name="manufacturerOriginalId"
+                [(ngModel)]="catalogItem.manufacturerOriginalId">
+              <!-- <mat-error *ngIf="newProductForm.controls['manufacturer_original_id'].hasError('required')">
+              Referencia is <strong>required</strong>
+            </mat-error> -->
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group  col-10 col-sm-10 col-md-10">
+            <mat-form-field class="full-width">
+              <mat-label>Fabricante</mat-label>
+              <input matInput type="text" [disabled]="true" placeholder="Fabricante" name="manufacturerEditedName"
+                [(ngModel)]="selectedManufacturer.nameLine +' -- '+ selectedManufacturer.organisationName">
+              <!-- <mat-select placeholder="Fabricante" name="nameLine" [(ngModel)]="person.nameLine">
+              <mat-option *ngFor="let name_line of nameLines" [value]="name_line.name">
+                {{ name_line.name }}
+              </mat-option>
+            </mat-select> -->
+              <!-- <mat-error *ngIf="newProductForm.controls['name_line'].hasError('required')">
+              manufacturer is <strong>required</strong>
+            </mat-error> -->
+            </mat-form-field>
+          </div>
+          <div class="form-group  col-2 col-sm-2 col-md-2">
+            <button mat-raised-button color="basic" (click)="openEditManufacturerDialog()">
+              <div class="small-label">
+                <mat-icon class="small-label">border_color</mat-icon>
+                Editar
+              </div>
+            </button>
+          </div>
+        </div>
+
+      </mat-card-content>
+      <mat-card-actions>
+        <div class="form-row">
+          <div class="form-group col-6 col-sm-6 col-md-6">
+            <button mat-raised-button [mat-dialog-close]="data" color="basic" (click)="createItem()">Guardar</button>
+          </div>
+          <div class="form-group col-6 col-sm-6 col-md-6">
+            <div class="input-group">
+              <div class="spacer"></div>
+              <button mat-raised-button mat-dialog-close color="basic">Cancelar</button>
+            </div>
+          </div>
+        </div>
+      </mat-card-actions>
+    </mat-card>
+  </form>

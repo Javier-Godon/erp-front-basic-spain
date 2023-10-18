@@ -1,0 +1,61 @@
+.searcher {
+    margin-top: 10px;
+    margin-left: 15px;
+  }
+
+  .icon {
+    margin-top: 5px;
+    margin-left: 10px;
+  }
+
+  .item-progress-bar {
+    margin-left: 30px;
+  }
+
+  .spacer{
+    flex: 1 1 auto;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  .small-label {
+    color: blue;
+    font-size: x-small;
+  }
+
+  .header-align-right{
+    display: flex;
+    padding: 21px 0;
+    justify-content: flex-end;
+  }
+
+  .w-5{
+    width: 5px;
+}
+
+.w-10{
+    width: 10px;
+}
+
+.th-center{
+  text-align: center;
+}
+.th-left{
+  text-align: left;
+}
+.th-right{
+  text-align: right;
+}
+
+.mat-row {height:10px}
+
+
+td.mat-cell {
+    max-height: 5px !important;
+}
+
+th.mat-header-cell {
+    max-height: 5px !important;
+}

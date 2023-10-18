@@ -1,0 +1,150 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="with = device-with, initial-scale=1">
+</head>
+<header>
+    <mat-toolbar color="primary">
+        <div mat-card-avatar>
+            <mat-icon>
+                person_outline
+            </mat-icon>
+        </div>
+        Datos personales
+    </mat-toolbar>
+</header>
+<div class="form-row">
+    <div class="form-group col-md-12">
+        <form #newPersonForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
+            <!-- <form [formGroup]="newPersonForm" novalidate> -->
+            <mat-card class="shipping-card">
+                <mat-card-content>
+                    <div class="form-row">
+                        <mat-radio-group name="isCompany" [(ngModel)]="person.isCompany">
+                            <div class="form-group col-md-4">
+                                <mat-radio-button name="isCompany" [value]="false">Persona Física</mat-radio-button>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <mat-radio-button name="isCompany" [value]="true">Persona Jurídica</mat-radio-button>
+                            </div>
+                        </mat-radio-group>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-4" *ngIf="!person.isCompany">
+                            <mat-form-field class="full-width">
+                                <input matInput placeholder="DNI/NIF" name="idCardNumber"
+                                    [(ngModel)]="person.idCardNumber">
+                            </mat-form-field>
+                        </div>    
+                        <div class="form-group col-md-6" *ngIf="person.isCompany">
+                            <mat-form-field class="full-width">
+                                <input matInput placeholder="DNI/NIF" name="idCardNumber"
+                                    [(ngModel)]="person.idCardNumber">
+                            </mat-form-field>
+                        </div>                    
+                        <div class="form-group col-md-4" *ngIf="!person.isCompany">
+                            <mat-form-field class="full-width">
+                                <input matInput placeholder="NUM. REF. HACIENDA" name="taxRegistrationNumber"
+                                    [(ngModel)]="person.taxRegistrationNumber">
+                                <!-- <mat-error *ngIf="newPersonForm.controls['lastName'].hasError('required')">
+                                    Last name is <strong>required</strong>
+                                </mat-error> -->
+                            </mat-form-field>
+                        </div>
+                        <div class="form-group col-md-6" *ngIf="person.isCompany">
+                            <mat-form-field class="full-width">
+                                <input matInput placeholder="NUM. REF. HACIENDA" name="taxRegistrationNumber"
+                                    [(ngModel)]="person.taxRegistrationNumber">
+                                <!-- <mat-error *ngIf="newPersonForm.controls['lastName'].hasError('required')">
+                                    Last name is <strong>required</strong>
+                                </mat-error> -->
+                            </mat-form-field>
+                        </div>
+                        <div class="form-group col-md-4" *ngIf="!person.isCompany">
+                            <mat-form-field class="full-width" >
+                                <input matInput placeholder="NUM. SEG. SOCIAL" name="nationalInsuranceNumber"
+                                    [(ngModel)]="person.nationalInsuranceNumber">
+                                <!-- <mat-error *ngIf="newPersonForm.controls['firstName'].hasError('required')">
+                                    First name is <strong>required</strong>
+                                </mat-error> -->
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-4"  *ngIf="!person.isCompany"> 
+                            <mat-form-field class="full-width">
+                                <input matInput placeholder="Nombre" name="firstName" [(ngModel)]="person.firstName">
+                                <!-- <mat-error *ngIf="newPersonForm.controls['firstName'].hasError('required')">
+                                    Address is <strong>required</strong>
+                                </mat-error> -->
+                            </mat-form-field>
+                        </div>
+                        <div class="form-group col-md-4"  *ngIf="!person.isCompany">
+                            <mat-form-field class="full-width">
+                                <input matInput placeholder="Primer apellido" name="middleName"
+                                    [(ngModel)]="person.middleName">
+                                <!-- <mat-error *ngIf="newPersonForm.controls['middleName'].hasError('required')">
+                                    Address is <strong>required</strong>
+                                </mat-error> -->
+                            </mat-form-field>
+                        </div>
+                        <div class="form-group col-md-4"  *ngIf="!person.isCompany">
+                            <mat-form-field class="full-width">
+                                <input matInput placeholder="Segundo apellido" name="lastName"
+                                    [(ngModel)]="person.lastName">
+                                <!-- <mat-error *ngIf="newPersonForm.controls['lastName'].hasError('required')">
+                                    Address is <strong>required</strong>
+                                </mat-error> -->
+                            </mat-form-field>
+                        </div>
+                        <div class="form-group col-md-4"  *ngIf="person.isCompany">
+                            <mat-form-field class="full-width">
+                                <input matInput placeholder="Razón Social" name="organisationName"
+                                    [(ngModel)]="person.organisationName">
+                                <!-- <mat-error *ngIf="newPersonForm.controls['lastName'].hasError('required')">
+                                    Address is <strong>required</strong>
+                                </mat-error> -->
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <mat-form-field class="full-width">
+                                <!-- <input matInput placeholder="Nombre" formControlName="nameLine"> -->
+                                <input matInput placeholder="Alias" name="nameLine" [(ngModel)]="person.nameLine">
+                                <!-- <mat-error *ngIf="newPersonForm.controls['nameLine'].hasError('required')">
+                                    Address is <strong>required</strong>
+                                </mat-error> -->
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <!-- <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <mat-form-field class="full-width">
+                                <mat-select placeholder="Teléfono" name="phoneNumber" [(ngModel)]="person.phoneNumber">
+                                    <mat-option *ngFor="let phoneNumber of phoneNumbers" [value]="phoneNumber.number">
+                                        {{ phoneNumber.number }}
+                                    </mat-option>
+                                </mat-select>                               
+                                <mat-hint>Acepta más de un teléfono</mat-hint>
+                            </mat-form-field>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <mat-form-field class="full-width">
+                                <mat-select placeholder="Email" name="emailAddress" [(ngModel)]="person.emailAddress">
+                                    <mat-option *ngFor="let emailAddress of emailAddresses"
+                                        [value]="emailAddress.email">
+                                        {{ emailAddress.email }}
+                                    </mat-option>
+                                </mat-select>                                
+                                <mat-hint>Acepta más de un email</mat-hint>
+                            </mat-form-field>
+                        </div>
+                    </div> -->
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-raised-button mat-dialog-close color="basic" type="submit">Guardar</button>
+                </mat-card-actions>
+            </mat-card>
+        </form>
+    </div>
+</div>

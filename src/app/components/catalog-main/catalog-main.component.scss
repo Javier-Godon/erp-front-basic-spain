@@ -1,0 +1,36 @@
+.catalog-tree-invisible {
+    display: none;
+  }
+  
+  .catalog-tree ul,
+  .catalog-tree li {
+    margin-top: 0;
+    margin-bottom: 0;
+    list-style-type: none;
+  }
+
+  .searcher {
+    margin-top: 10px;
+  }
+
+  .icon {
+    margin-top: 5px;
+    margin-left: 10px;
+  }
+
+  .item-progress-bar {
+    margin-left: 30px;
+  }
+
+  .spacer{
+    flex: 1 1 auto;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  .small-label {
+    color: blue;
+    font-size: x-small;
+  }

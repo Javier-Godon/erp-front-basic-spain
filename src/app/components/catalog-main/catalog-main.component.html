@@ -1,0 +1,204 @@
+<ng-template #recursiveTemplate>
+  <mat-accordion>
+    <label class="small-label">{{parentsCategoriesString}} </label>
+    <div *ngIf="hasChildren == false">
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <div class="input-group">
+            <mat-form-field>
+              <mat-label>Buscar</mat-label>
+              <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="form-group col-md-6">
+          <div class="input-group">
+            <div class="spacer"></div>
+            <button mat-raised-button (click)="openCreateProductOnCategoryDialog()">
+              <div class="spacer"></div>
+              <div class="small-label">
+                <mat-icon class="small-label">add</mat-icon>
+                Agregar producto
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" matSort>
+
+          <!-- Item Column -->
+          <ng-container matColumnDef="item">
+            <th mat-header-cell *matHeaderCellDef> Articulo </th>
+            <td mat-cell *matCellDef="let row">
+              <button mat-button color="basic" (click)="openProductDetailedCardDialog(row)">
+                <div>
+                  {{row.itemTitle}}
+                </div>
+              </button>
+            </td>
+          </ng-container>
+
+          <!-- Manufacturer Column -->
+          <ng-container matColumnDef="manufacturer">
+            <th mat-header-cell *matHeaderCellDef> Fabricante </th>
+            <td mat-cell *matCellDef="let row">
+              <button mat-button color="basic" (click)="openProductDetailedCardDialog(row)">
+                <div>
+                  {{row.manufacturerNameLine}}
+                </div>
+              </button>
+            </td>
+          </ng-container>
+
+          <!-- Manufacturer original Id Column -->
+          <ng-container matColumnDef="manufacturerOriginalId">
+            <th mat-header-cell *matHeaderCellDef> Referencia </th>
+            <td mat-cell *matCellDef="let row">
+              <button mat-button color="basic" (click)="openProductDetailedCardDialog(row)">
+                <div>
+                  {{row.manufacturerOriginalId}}
+                </div>
+              </button>
+            </td>
+          </ng-container>
+
+          <!-- Price Column -->
+          <ng-container matColumnDef="price">
+            <th mat-header-cell *matHeaderCellDef> Precio </th>
+            <td mat-cell *matCellDef="let row">
+              <button mat-button color="basic" (click)="openProductDetailedCardDialog(row)">
+                <div>
+                  {{row.price}}
+                </div>
+              </button>
+            </td>
+
+          </ng-container>
+
+          <!-- Delete Column -->
+          <ng-container matColumnDef="delete" stickyEnd>
+            <th mat-header-cell *matHeaderCellDef> Borrar </th>
+            <td mat-cell *matCellDef="let row">
+              <button mat-button color="basic" (click)="openDeleteProductDialog(row)">
+                <div>
+                  <mat-icon>delete_forever</mat-icon>
+                </div>
+              </button>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+          <!-- Row shown when there is no matching data. -->
+          <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+          </tr>
+        </table>
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+      </div>
+    </div>
+    <mat-expansion-panel hideToggle class="whiteFont" *ngFor="let childrenCategory of childrenCategories">
+      <mat-expansion-panel-header class="whiteFont">
+        <mat-panel-title>
+          <button mat-button color="basic" (click)="getAllChildrenForACategory(childrenCategory)">
+            {{childrenCategory.categoryName}}
+          </button>
+        </mat-panel-title>
+        <mat-panel-description>
+          <div class="spacer"></div>
+          <button mat-button color="primary" (click)="openNewSubCategoryDialog(childrenCategory)">
+            <div class="small-label">
+              <mat-icon class="small-label">add</mat-icon>
+              Agregar subcategoría
+            </div>
+          </button>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <!-- <a mat-list-item routerLink="person" class="whiteFontSubLevel">personas</a> -->
+      <mat-action-row>
+        <button mat-button color="primary" (click)="openNewSubCategoryDialog(childrenCategory)">Next</button>
+      </mat-action-row>
+      <ng-template matExpansionPanelContent>
+        <ng-container [ngTemplateOutlet]="recursiveTemplate"></ng-container>
+      </ng-template>
+    </mat-expansion-panel>
+  </mat-accordion>
+</ng-template>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="with = device-with, initial-scale=1">
+</head>
+<header>
+
+  <mat-toolbar color="primary">
+    <div mat-card-avatar>
+      <mat-icon>
+        description
+      </mat-icon>
+    </div>
+    Catálogo
+  </mat-toolbar>
+</header>
+<form #catalogMainForm="ngForm" novalidate>
+  <hr />
+  {{ mainCategories | json}}
+  <hr />
+  <div class="form-group col-md-12">
+    <div class="input-group">
+      <input class="form-control mr-sm-2 mr-1 searcher" type="search" placeholder="Buscar..." aria-label="Search">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      <div class="input-group">
+        <button mat-button color="primary" (click)="openNewCategoryDialog()">
+          <div class="small-label">
+            <mat-icon class="small-label">add</mat-icon>
+            Nueva categoría
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="form-group col-md-12">
+    <mat-nav-list>
+      <mat-accordion>
+        <mat-expansion-panel hideToggle class="whiteFont" *ngFor="let mainCategory of mainCategories">
+          <mat-expansion-panel-header class="whiteFont">
+            <mat-panel-title>
+              <button mat-button color="basic" (click)="getAllChildrenForACategory(mainCategory)">
+                {{mainCategory.categoryName}}
+              </button>
+            </mat-panel-title>
+            <mat-panel-description>
+              <div class="spacer"></div>
+              <button mat-button color="primary" (click)="openNewSubCategoryDialog(mainCategory)">
+                <div class="small-label">
+                  <mat-icon class="small-label">add</mat-icon>
+                  Agregar subcategoría
+                </div>
+              </button>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <!-- <a mat-list-item routerLink="person" class="whiteFontSubLevel">personas</a> -->
+          <!-- <mat-action-row>
+            <button mat-button color="primary" (click)="openNewSubCategoryDialog(mainCategory)">Next</button>
+          </mat-action-row> -->
+
+          <ng-template matExpansionPanelContent>
+            <ng-container [ngTemplateOutlet]="recursiveTemplate"></ng-container>
+          </ng-template>
+
+        </mat-expansion-panel>
+      </mat-accordion>
+    </mat-nav-list>
+  </div>
+</form>

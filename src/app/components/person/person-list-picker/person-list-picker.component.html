@@ -1,0 +1,50 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="with = device-with, initial-scale=1">
+</head>
+<header>
+    <mat-icon>
+        list
+    </mat-icon>
+    <!-- <mat-toolbar color="primary">
+        <div mat-card-avatar>
+            <mat-icon>
+                list
+            </mat-icon>
+        </div>
+        Seleccionar
+    </mat-toolbar> -->
+</header>
+<div class="form-row">
+    <div class="form-group col-md-12">
+        <form #personListForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
+            <!-- <form [formGroup]="newPersonForm" novalidate> -->
+            <!-- <mat-card class="shipping-card">
+                <mat-card-content> -->
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <div class="input-group">
+                        <input (keyup)="refreshSearch($event.target.value)" class="form-control mr-sm-2 mr-1 searcher"
+                            type="search" placeholder="Buscar..." aria-label="Search">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-md-12 ">
+                <div class="mat-elevation-z8">
+                    <mat-selection-list dense [multiple]="false" >
+                        <mat-list-option [mat-dialog-close]="person" *ngFor="let person of personListReduced" name="person" [value]="person">
+                            {{ person.nameLine }} / {{person.firstName}} {{person.middleName}}
+                            {{person.lastName}} {{person.organisationName}}
+                        </mat-list-option>
+                    </mat-selection-list>
+                    <!-- <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator> -->
+                </div>
+            </div>
+            <!-- </mat-card-content> -->
+            <!-- <mat-card-actions>
+                    <button mat-raised-button mat-dialog-close color="basic" type="submit">Cancelar</button>
+                </mat-card-actions> -->
+            <!-- </mat-card> -->
+        </form>
+    </div>
+</div>

@@ -1,0 +1,74 @@
+//.sidenav-container {
+//  height: 100%;
+//}
+
+
+//.sidenav .mat-toolbar {
+//  background: inherit;
+//}
+.spacer{
+  flex: 1 1 auto;
+}
+
+.fixed-top {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1030;
+}
+
+.sidenav {
+  overflow: auto !important;
+  overflow-x: auto !important;
+  overflow-y: auto !important;
+}
+
+.sidenav {
+  width: 250px;
+  position: fixed;
+  top: 50px;
+  left: 0;
+  height: 100vh;
+  z-index: 999;
+  color: #fff;
+  transition: all 0.3s;
+  transition-property: all;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
+  transition-delay: 0s;
+  box-shadow: 0px 0px 7px #666;
+  padding-bottom: 40px;
+  background-color: rgb(131, 142, 151);
+}
+
+.whiteFont{
+  background-color: rgb(131, 142, 151);
+  color:#fff;
+  font-family: Arial, Helvetica, sans-serif;
+  //padding: 0px;
+}
+
+.whiteFontSubLevel {
+  background-color: rgb(131, 142, 151);
+  color:rgb(212, 140, 135);
+  font-family: Arial, Helvetica, sans-serif;
+  //padding: 0px;
+}
+
+.sidenav {
+  display: block;
+  padding-top: 60px;  
+}
+
+.main-content{
+  display: block;
+  padding-top: 60px;
+}
+
+.input-group {
+  padding-top: 2px;
+  padding-left: 4px;
+}
+
+
